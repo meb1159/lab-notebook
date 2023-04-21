@@ -8,7 +8,7 @@ repositories on Github is kind of like goodgle docs, way to share data to other 
     make repo
         - 
 - can edit in web interface or edit in vscode and upload changes to github 
-## in vscode makes a new section 
+# in vscode makes a new section 
 - code format for plots in in provided example 
 
 Project layout:
