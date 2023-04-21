@@ -32,7 +32,7 @@ Group: Nicole, Kim, Me
 
 create a pull request to send something to be published on shared page... nicole has to approve it 
 
-Friday 4/21/2023 
+## Friday 4/21/2023 
 link to main info repository: https://github.com/jthmiller/eDNA-metabarcoding-intro/tree/Gen711-811
     link to our data: /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1
     
@@ -58,13 +58,13 @@ cp /tmp/meb1159/711-final-project/fastp.sh ~/fastp.sh
 ./fastp.sh 150 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs
     # 150 is thepoly g length cut off, with the directory of the reads to trim and the directory to store the reads in 
 ./fastp.sh 150 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs
-    # # 150 is thepoly g length cut off, with the directory of the reads to trim and the directory to store the reads in 
+     # 150 is thepoly g length cut off, with the directory of the reads to trim and the directory to store the reads in 
 
 conda env list  
 conda activate qiime-2022.8
 
 qiime tools import \--type "SampleData[PairedEndSequencesWithQuality]"  \ --input-format CasavaOneEightSingleLanePerSampleDirFmt \ --input-path /home/users/meb1159/trimmed_fastqs \ --output-path <path to an output directory>/<a name for the output files> \
-    ## import the directory of poly-G trimmed FASTQ files into a single 'qiime file'
+    # import the directory of poly-G trimmed FASTQ files into a single 'qiime file'
 
 qiime cutadapt trim-paired \
     --i-demultiplexed-sequences <path to the file from step 2> \
@@ -74,9 +74,9 @@ qiime cutadapt trim-paired \
     --p-match-adapter-wildcards \
     --verbose \
     --o-trimmed-sequences <path to an output directory>/<name for the output files>.qza
-    ## remove the primers and adapters of each pair of sequences
+    # remove the primers and adapters of each pair of sequences
 
 qiime demux summarize \
 --i-data <path to the file from step above> \
 --o-visualization  <path to an output directory>/<a name for the output files>.qzv 
-    ## make a summary of the summary.qzv file
+    # make a summary of the summary.qzv file
