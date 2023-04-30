@@ -82,74 +82,40 @@ qiime demux summarize \
     # make a summary of the summary.qzv file
   
 ## Friday 4/28/23
-For File 2
-cp /tmp/gen711_project_data/fastp-single.sh . chmod +x fastp-single.sh ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs_2
 
-conda activate qiime2-2022.8
-
-qiime tools import --type "SampleData[PairedEndSequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path /home/users/ndb1029/711-final-project/trimmed_fastqs --output-path /home/users/ndb1029/711-final-project/trimmed_fastqs/qiime_fastqs
-
-qiime cutadapt trim-single --i-demultiplexed-sequences qiime_trimmed_fastqs_1.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences qiime_fastqs.qza
-
-qiime demux summarize --i-data qiime_fastqs.qza --o-visualization demux1
-
-###denoising qiime dada2 denoise-single --i-demultiplexed-seqs qiime_fastqs.qza --p-trunc-len 150 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
-
-qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
-
-qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs.qzv
-
-.gza files saved under:
-/home/users/ndb1029/711-final-project/trimmed_fastqs
-
-For File 1:
-conda activate genomics cp /tmp/gen711_project_data/fastp-single.sh . chmod +x fastp-single.sh ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs_1 conda activate qiime2-2022.8 qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path /home/users/ndb1029/711-final-project/trimmed_fastqs_1 --output-path qiime_trimmed_fastqs_1
-
-qiime cutadapt trim-single --i-demultiplexed-sequences qiime_trimmed_fastqs_1.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences qiime_fastqs1.qza qiime demux summarize --i-data qiime_fastqs1.qza --o-visualization demux_1
-
-###denoising qiime dada2 denoise-single --i-demultiplexed-seqs qiime_fastqs1.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
-
-qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
-
-qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs.qzv
-
-    4/28 NOTES:
-
-### activate genomics environment
+#activate genomics environment
 conda activate genomics
-### If you have not run fastp yet...
 cp /tmp/gen711_project_data/fastp-single.sh .
 chmod +x fastp-single.sh
-### run fastp
+# run fastp
 ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs_FP
 
 ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-1 trimmed_fastqs_FP1
 
-###check the file sizes of the polyg trimmed fastq files
-###Are any empty? Those will need to be removed from the directory
+-check the file sizes of the polyg trimmed fastq files
+-Are any empty? Those will need to be removed from the directory
 ls -shS
 
 # run the following steps twice. Once for each output directory
 
-### activate qiime
+# activate qiime
 conda activate qiime2-2022.8
 
-### import fastqs into a single qiime file
+# import fastqs into a single qiime file
 qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path /home/users/kgb1008/711-final-project/trimmed_fastqs_FP --output-path qiime_trimmed_fastqs_2
 
 qiime tools import --type "SampleData[SequencesWithQuality]" --input-format CasavaOneEightSingleLanePerSampleDirFmt --input-path /home/users/kgb1008/711-final-project/trimmed_fastqs_FP1 --output-path qiime_trimmed_fastqs_1
 
-### cutadapt
+# cutadapt
 qiime cutadapt trim-single --i-demultiplexed-sequences qiime_trimmed_fastqs_2.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences qiime_cutadaot_fastqa_2
 
 qiime demux summarize --i-data qiime_cutadaot_fastqa_2.qza --o-visualization qiime_demux_fastqa_2.qza
-
 
 qiime cutadapt trim-single --i-demultiplexed-sequences qiime_trimmed_fastqs_1.qza --p-front TACGTATGGTGCA --p-discard-untrimmed --p-match-adapter-wildcards --verbose --o-trimmed-sequences qiime_cutadaot_fastqa_1
 
 qiime demux summarize --i-data qiime_cutadaot_fastqa_1.qza --o-visualization qiime_demux_fastqa_1.qza
 
-### denoising
+# denoising
 qiime dada2 denoise-single --i-demultiplexed-seqs qiime_cutadaot_fastqa_2.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats_2.qza --o-table feature_table_2.qza --o-representative-sequences rep-seqs_2.qza
         Saved FeatureTable[Frequency] to: feature_table_2.qza
         Saved FeatureData[Sequence] to: rep-seqs_2.qza
@@ -161,7 +127,6 @@ qiime metadata tabulate --m-input-file denoising-stats_2.qza --o-visualization d
 qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs_2.qzv
         Saved Visualization to: rep-seqs_2.qzv
 
-
 qiime dada2 denoise-single --i-demultiplexed-seqs qiime_cutadaot_fastqa_1.qza --p-trunc-len 50 --p-trim-left 13 --p-n-threads 4 --o-denoising-stats denoising-stats.qza --o-table feature_table.qza --o-representative-sequences rep-seqs.qza
         Saved FeatureTable[Frequency] to: feature_table.qza
         Saved FeatureData[Sequence] to: rep-seqs.qza
@@ -172,3 +137,8 @@ qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization den
 
 qiime feature-table tabulate-seqs --i-data rep-seqs.qza --o-visualization rep-seqs.qzv
         Saved Visualization to: rep-seqs.qz
+        
+## .gza files saved at:
+/home/users/meb1159/711-final-project/trimmed_fastqs
+
+
