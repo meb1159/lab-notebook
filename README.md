@@ -81,7 +81,7 @@ qiime demux summarize \
 --o-visualization  <path to an output directory>/<a name for the output files>.qzv 
     # make a summary of the summary.qzv file
   
-    ## Friday 4/28/23
+## Friday 4/28/23
 For File 2
 cp /tmp/gen711_project_data/fastp-single.sh . chmod +x fastp-single.sh ./fastp-single.sh 120 /tmp/gen711_project_data/FMT_3/fmt-tutorial-demux-2 trimmed_fastqs_2
 
